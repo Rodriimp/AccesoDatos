@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;r&apos; in &apos;proyecto.dao.UsuariosDao.consultarUsuario(...)&apos; to &apos;u&apos;&#x0D;&#x0A;- Original project: &apos;ceu-fct_Services&apos;&#x0D;&#x0A;- Original element: &apos;proyecto.dao.UsuariosDao.consultarUsuario(Connection, String).r&apos;&#x0D;&#x0A;- Renamed element: &apos;r&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;r&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;proyecto.dao{UsuariosDao.java[UsuariosDao~consultarUsuario~QConnection;~QString;@r!385!410!393!393!QUsuario;!0!false" name="u" references="true" stamp="1697031318637" version="1.0"/>
+</session>

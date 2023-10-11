@@ -1,0 +1,18 @@
+package proyecto.app;
+
+import proyecto.modelo.Usuario;
+import proyecto.services.UsuariosService;
+
+public class Test {
+
+	public static void main(String[] args) {
+		UsuariosService userService = new UsuariosService();
+
+		Usuario user = new Usuario();
+		user.setEmail("hola@gmail.com");
+		user.setNombre("Rodri");
+		user.setApellidos("Moreno Palacios");
+		user.setPassword("12345");
+	}
+
+}

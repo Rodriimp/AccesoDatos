@@ -1,0 +1,26 @@
+package proyecto.dao;
+
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import proyecto.modelo.Usuario;
+
+public class UsuariosDao {
+
+	public Usuario consultarUsuario(String email) {
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "Select * from usuario where email= " + email;
+
+		} finally {
+			try {
+				stmt.close();
+			} catch (Exception ignore) {
+
+			}
+		}
+		return null;
+
+	}
+}

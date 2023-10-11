@@ -1,0 +1,12 @@
+package proyecto.dao;
+
+import java.util.List;
+
+import proyecto.modelo.Fecha;
+
+public class FechasDao {
+
+	public List<Fecha> consultarFechas() {
+
+	}
+}

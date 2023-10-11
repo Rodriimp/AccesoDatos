@@ -1,0 +1,9 @@
+package proyecto.dao;
+
+public class FechasDao {
+
+	public List<Fecha> consultarFechas() {
+s
+		
+	}
+}

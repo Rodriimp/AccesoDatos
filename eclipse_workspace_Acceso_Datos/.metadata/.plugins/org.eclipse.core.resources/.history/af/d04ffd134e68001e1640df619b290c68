@@ -1,0 +1,11 @@
+package proyecto.services;
+
+public class FechasService {
+
+	private OpenConnection connProvider;
+
+	public FechasService() {
+		this.connProvider = new OpenConnection();
+	}
+
+}

@@ -1,0 +1,15 @@
+package proyecto.services;
+
+import proyecto.modelo.Usuario;
+
+public class UsuariosService {
+	private OpenConnection connProvider;
+
+	public UsuariosService() {
+		this.connProvider = new OpenConnection();
+	}
+
+	public Usuario login(String email, String pass) {
+		return null;
+	}
+}

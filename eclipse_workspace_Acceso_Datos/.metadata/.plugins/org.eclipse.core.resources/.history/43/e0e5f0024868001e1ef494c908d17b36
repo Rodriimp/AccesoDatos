@@ -1,0 +1,65 @@
+package proyecto.services;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import proyecto.dao.UsuariosDao;
+import proyecto.modelo.Usuario;
+
+public class UsuariosService {
+	private OpenConnection connProvider;
+
+	public UsuariosService() {
+		this.connProvider = new OpenConnection();
+	}
+
+	public Usuario login(String email, String pass) throws FctException {
+		Connection conn = null;
+		Usuario u = new Usuario();
+		try {
+			conn = connProvider.abrirConexion();
+			UsuariosDao userDao = new UsuariosDao();
+			u = userDao.consultarUsuario(conn, email);
+
+			if (u == null) {
+				throw new AutenticarException("El email o la contraseña no son válidos");
+			} else {
+				return u;
+			}
+
+		} catch (SQLException e) {
+			throw new FctException("Error al obtener datos del usuario de la bbdd", e);
+
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	public void altaUsuario(Usuario usuario) throws FctException {
+		Connection conn = null;
+
+		try {
+			conn = connProvider.abrirConexion();
+			UsuariosDao userDao = new UsuariosDao();
+			Usuario u = userDao.consultarUsuario(conn, usuario.getEmail());
+
+			if (u == null) {
+				userDao.insertarUsuario(conn, usuario);
+			}else {
+				
+			}
+
+		} catch (Exception e) {
+			throw new FctException("Error al obtener datos del usuario de la bbdd", e);
+
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+}

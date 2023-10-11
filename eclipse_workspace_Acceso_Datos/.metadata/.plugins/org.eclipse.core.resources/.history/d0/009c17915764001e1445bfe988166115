@@ -1,0 +1,45 @@
+package proyecto.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import proyecto.modelo.Fecha;
+
+public class FechasDao {
+
+	public List<Fecha> consultarFechas(Connection conn, Integer año, Integer evaluacion, Boolean disp) {
+
+		Statement stmt = null;
+		ResultSet rs = null;
+		List<Fecha> fechas = new ArrayList<Fecha>();
+
+		try {
+			String sql = "SELECT * from fechas where año= " + año + " and evaluacion= " + evaluacion
+					+ " and disponibilidad= " + disp;
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				Fecha f = new Fecha();
+				f.setFecha(rs.getDate("fecha"));
+				f.setAño(rs.getInt("año"));
+				f.setEvaluacion(rs.getInt("evaluacion"));
+				f.setDisponibilidad(rs.getBoolean("disponibilidad"));
+
+				fechas.add(f);
+			}
+
+		} finally {
+			try {
+				stmt.close();
+			} catch (Exception ignore) {
+
+			}
+		}
+		return fechas;
+
+	}
+}

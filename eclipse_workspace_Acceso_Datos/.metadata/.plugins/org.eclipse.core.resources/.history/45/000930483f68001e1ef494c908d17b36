@@ -1,0 +1,9 @@
+package proyecto.services;
+
+public class UsuariosService {
+	private OpenConnection connProvider;
+
+	public PedidosService() {
+		this.connProvider = new OpenConnection();
+	}
+}

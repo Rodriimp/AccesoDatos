@@ -1,0 +1,19 @@
+package proyecto.services;
+
+import java.util.List;
+
+import proyecto.modelo.Fecha;
+
+public class FechasService {
+
+	private OpenConnection connProvider;
+
+	public FechasService() {
+		this.connProvider = new OpenConnection();
+	}
+
+	public List<Fecha> consultarActuales() {
+		return null;
+	}
+
+}
