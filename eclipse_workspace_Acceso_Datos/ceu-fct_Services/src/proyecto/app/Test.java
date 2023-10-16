@@ -1,24 +1,25 @@
 package proyecto.app;
 
-import proyecto.modelo.Usuario;
-import proyecto.services.UsuariosService;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
+
+import proyecto.modelo.Registro;
+import proyecto.services.RegistrosService;
 
 public class Test {
 
 	public static void main(String[] args) {
-		UsuariosService userService = new UsuariosService();
-
-		Usuario user = new Usuario();
-		user.setEmail("hola@gmail.com");
-		user.setPassword("12345");
-		user.setNombre("Rodri");
-		user.setApellidos("Moreno Palacios");
-		user.setCiclo("DAM");
-		user.setActivo(true);
+		RegistrosService rService = new RegistrosService();
+		Registro registro = new Registro();
+		registro.setId_registro(1L);
+		registro.setId_usuario(5L);
+		registro.setFecha(Date.valueOf(LocalDate.now()));
+		registro.setNum_horas(new BigDecimal(3.5));
+		registro.setDescripcion("hola");
 
 		try {
-			userService.login(user.getEmail(), user.getPassword());
-
+			rService.crearRegistro(registro);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

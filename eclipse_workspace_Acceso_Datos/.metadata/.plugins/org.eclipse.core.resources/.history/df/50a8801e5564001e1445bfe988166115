@@ -1,8 +1,0 @@
-package proyecto.dao;
-
-public class FechasDao {
-
-	public void consultarFechas() {
-
-	}
-}

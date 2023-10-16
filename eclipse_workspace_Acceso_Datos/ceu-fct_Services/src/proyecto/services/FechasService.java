@@ -3,6 +3,7 @@ package proyecto.services;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import proyecto.dao.FechasDao;
@@ -18,10 +19,22 @@ public class FechasService {
 
 	public List<Fecha> consultarActuales() throws FctException {
 		Connection conn = null;
+		List<Fecha> lista = new ArrayList<>();
+		FechasDao fDao = new FechasDao();
+
 		try {
 			conn = connProvider.abrirConexion();
-			FechasDao fDao = new FechasDao();
-			fDao.consultarFechas(conn, null, null);
+
+			Integer evaluacion = 0;
+			if (LocalDate.now().getMonthValue() >= 9 && LocalDate.now().getMonthValue() <= 11) {
+				evaluacion = 1;
+			} else if (LocalDate.now().getMonthValue() >= 12 && LocalDate.now().getMonthValue() <= 2) {
+				evaluacion = 2;
+			} else if (LocalDate.now().getMonthValue() >= 3 && LocalDate.now().getMonthValue() <= 5) {
+				evaluacion = 3;
+			}
+
+			lista = fDao.consultarFechas(conn, LocalDate.now().getYear(), evaluacion);
 
 		} catch (SQLException e) {
 			throw new FctException("Error al obtener datos del usuario de la bbdd", e);
@@ -33,7 +46,7 @@ public class FechasService {
 			}
 
 		}
-		return null;
+		return lista;
 
 	}
 }
