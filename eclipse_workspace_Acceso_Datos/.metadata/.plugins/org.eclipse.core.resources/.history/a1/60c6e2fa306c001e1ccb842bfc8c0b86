@@ -1,0 +1,65 @@
+package proyecto.services;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import proyecto.dao.RegistrosDao;
+import proyecto.modelo.Registro;
+
+public class RegistrosService {
+	private OpenConnection connProvider;
+
+	public RegistrosService() {
+		this.connProvider = new OpenConnection();
+
+	}
+
+	public List<Registro> consultarRegistrosUsuario(Long idUsuario) throws FctException {
+
+		Connection conn = null;
+		try {
+			conn = connProvider.abrirConexion();
+			RegistrosDao rDao = new RegistrosDao();
+
+			return rDao.consultarRegistro(conn, idUsuario);
+
+		} catch (SQLException e) {
+			throw new FctException("Error al obtener datos de los registros de la bbdd", e);
+
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+
+		}
+	}
+
+	public void crearRegistro(Registro registro) throws FctException {
+		Connection conn = null;
+		RegistrosDao rDao = new RegistrosDao();
+
+		try {
+			conn = connProvider.abrirConexion();
+			if (rDao.consultarFechaRegistro(conn, registro.getId_usuario(), registro.getFecha().toLocalDate())) {
+				
+				throw new FctException("Ya existe un registro para ese usuario y fecha");
+				
+			} else {
+				rDao.insertarRegistro(conn, registro);
+
+			}
+
+		} catch (SQLException e) {
+			throw new FctException("Error al obtener datos de los registros de la bbdd", e);
+
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+
+		}
+	}
+}

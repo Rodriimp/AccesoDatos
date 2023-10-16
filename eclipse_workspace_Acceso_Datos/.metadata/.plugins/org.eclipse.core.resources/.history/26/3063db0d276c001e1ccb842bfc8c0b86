@@ -1,0 +1,12 @@
+package proyecto.services;
+
+public class RegistrosService {
+	private OpenConnection connProvider;
+
+	public RegistrosService() {
+		this.connProvider = new OpenConnection();
+		
+	}
+
+	
+}

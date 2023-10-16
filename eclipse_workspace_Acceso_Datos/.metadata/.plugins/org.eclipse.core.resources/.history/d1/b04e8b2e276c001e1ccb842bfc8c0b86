@@ -1,0 +1,35 @@
+package proyecto.services;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+
+import proyecto.modelo.Registro;
+
+public class RegistrosService {
+	private OpenConnection connProvider;
+
+	public RegistrosService() {
+		this.connProvider = new OpenConnection();
+
+	}
+
+	public List<Registro> consultarRegistrosUsuario(Long idUsuario) throws FctException {
+
+		Connection conn = null;
+		try {
+			conn = connProvider.abrirConexion();
+
+			return null;
+		} catch (SQLException e) {
+			throw new FctException("Error al obtener datos del usuario de la bbdd", e);
+
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+
+		}
+	}
+}
