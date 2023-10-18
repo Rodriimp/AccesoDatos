@@ -1,9 +1,0 @@
-package proyecto.services;
-
-public class FechasService {
-
-	public FechasService() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
