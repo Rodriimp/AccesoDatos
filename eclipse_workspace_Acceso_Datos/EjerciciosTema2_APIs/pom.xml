@@ -2,8 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>EjerciciosTema1</groupId>
-	<artifactId>EjerciciosTema1</artifactId>
+	<groupId>EjerciciosTema2_APIs</groupId>
+	<artifactId>EjerciciosTema2_APIs</artifactId>
 	<version>1.0.0</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -17,27 +17,16 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<dependencies>
 		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
-			<version>3.2.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.5.5</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.30</version>
-			<scope>provided</scope>
+			<groupId>EjerciciosTema1</groupId>
+			<artifactId>EjerciciosTema1</artifactId>
+			<version>1.0.0</version>
 		</dependency>
-
 	</dependencies>
-
 </project>
