@@ -1,6 +1,5 @@
 package ej02.services;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +12,22 @@ import ej02.modelo.Cliente;
 public class ClientesServiceRest {
 
 	@GetMapping("/clientes")
-	public Map<String, Cliente> getClientes(@RequestParam Cliente c) {
+	public Cliente getClientes(@RequestParam String email) throws ClientesNotFoundException {
 
 		ClientesService cService = new ClientesService();
+		Cliente c = new Cliente();
+		
 		try {
 			Map<String, Cliente> mapaClientes = cService.getMapaClientes();
-			Map<String, Cliente> mapaClientesEmail = new HashMap<String, Cliente>();
-			
+			c = mapaClientes.get(email);
+			if (c == null) {
+				throw new ClientesNotFoundException("No existe ningun cliente con ese email");
+			}
+
 		} catch (ClientesServiceException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return c;
 
 	}
 

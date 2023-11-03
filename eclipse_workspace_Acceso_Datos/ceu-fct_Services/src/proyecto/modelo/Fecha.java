@@ -1,19 +1,20 @@
 package proyecto.modelo;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Fecha {
 
-	private Date fecha;
+	private LocalDate fecha;
 	private Integer año;
 	private Integer evaluacion;
 	private Boolean disponibilidad;
 
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
@@ -41,9 +42,15 @@ public class Fecha {
 		this.disponibilidad = disponibilidad;
 	}
 
+	public String toStringFecha() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String fechaCadena = fecha.format(formato);
+		return fechaCadena;
+	}
+
 	@Override
 	public String toString() {
-		return "Fechas [fecha=" + fecha + ", año=" + año + ", evaluacion=" + evaluacion + ", disponibilidad="
+		return "Fecha [fecha=" + fecha + ", año=" + año + ", evaluacion=" + evaluacion + ", disponibilidad="
 				+ disponibilidad + "]";
 	}
 

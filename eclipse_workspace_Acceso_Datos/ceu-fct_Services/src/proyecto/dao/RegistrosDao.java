@@ -89,13 +89,12 @@ public class RegistrosDao {
 		PreparedStatement stmt = null;
 
 		try {
-			String sql = "Insert into registros (id_registro, id_usuario, fecha, num_horas, descripcion) values (?,?,?,?,?)";
+			String sql = "Insert into registros (id_usuario, fecha, num_horas, descripcion) values (?,?,?,?)";
 			stmt = conn.prepareStatement(sql);
-			stmt.setLong(1, registro.getId_registro());
-			stmt.setLong(2, registro.getId_usuario());
-			stmt.setDate(3, registro.getFecha());
-			stmt.setBigDecimal(4, registro.getNum_horas());
-			stmt.setString(5, registro.getDescripcion());
+			stmt.setLong(1, registro.getId_usuario());
+			stmt.setDate(2, registro.getFecha());
+			stmt.setBigDecimal(3, registro.getNum_horas());
+			stmt.setString(4, registro.getDescripcion());
 
 			stmt.execute();
 

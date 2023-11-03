@@ -24,7 +24,7 @@ public class FechasDao {
 
 			while (rs.next()) {
 				Fecha f = new Fecha();
-				f.setFecha(rs.getDate("fecha"));
+				f.setFecha(rs.getDate("fecha").toLocalDate());
 				f.setAño(rs.getInt("año"));
 				f.setEvaluacion(rs.getInt("evaluacion"));
 				f.setDisponibilidad(rs.getBoolean("disponibilidad"));
